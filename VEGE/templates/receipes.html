@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+<div class="d-flex min-vh-100 align-items-center justify-content-center"> 
+  <div class="card shadow-sm border border-2 border-primary" style="width:520px; max-width:94%;">
+    <div class="card-body">
+      <h2 class="card-title mb-3 text-center">Receipe</h2>
+      <hr>
+      <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_name" class="form-label">Receipe name</label>
+          <input id="id_name" name="receipe_name" type="text" class="form-control">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="id_description" class="form-label">Receipe description</label>
+          <textarea id="id_description" name="receipe_description" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="id_image" class="form-label">Receipe image</label>
+          <input id="id_image" name="receipe_image" type="file" class="form-control">
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+ {% endblock %}
