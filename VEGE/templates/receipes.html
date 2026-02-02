@@ -30,5 +30,27 @@
   </div>
 </div>
 
-
- {% endblock %}
+      </div>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Receipe name</th>
+      <th scope="col">receipe_description</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for recipe in receipes %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{Receipe.receipe_name}}</td>
+      <td>{{receipe.receipe_description}}</td>
+      <td>{{receipe.receipe_image}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  
+      </div>
+{% endblock %}
