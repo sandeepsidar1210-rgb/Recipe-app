@@ -1,56 +1,57 @@
 {% extends "base.html" %}
 {% block start %}
 
+<div class="container mt-5 d-flex flex-column align-items-center"> 
 
-<div class="d-flex min-vh-100 align-items-center justify-content-center"> 
-  <div class="card shadow-sm border border-2 border-primary" style="width:520px; max-width:94%;">
-    <div class="card-body">
-      <h2 class="card-title mb-3 text-center">Receipe</h2>
-      <hr>
-      <form method="post" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="id_name" class="form-label">Receipe name</label>
-          <input id="id_name" name="receipe_name" type="text" class="form-control">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div class="card shadow-lg p-3 border border-2 border-primary mb-5" style="width:520px; max-width:94%;">
+        <div class="card-body">
+            <h2 class="card-title mb-3 text-center">Add Receipe</h2>
+            <hr>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Receipe name</label>
+                    <input name="receipe_name" required type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Receipe description</label>
+                    <textarea name="receipe_description" required class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Receipe image</label>
+                    <input name="receipe_image" type="file" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Submit</button>
+            </form>
         </div>
-        <div class="mb-3">
-          <label for="id_description" class="form-label">Receipe description</label>
-          <textarea id="id_description" name="receipe_description" class="form-control"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="id_image" class="form-label">Receipe image</label>
-          <input id="id_image" name="receipe_image" type="file" class="form-control">
-        </div>
-        <div class="d-flex justify-content-center">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
     </div>
-  </div>
+
+    <table class="table table-bordered shadow-sm">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Receipe name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receipe in receipes %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{receipe.receipe_name}}</td>
+                <td>{{receipe.receipe_description}}</td>
+                <td>
+                    {% if receipe.receipe_image %}
+                        <img src="/media/{{ receipe.receipe_image }}" style="height: 100px;">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
-      </div>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Receipe name</th>
-      <th scope="col">receipe_description</th>
-      <th scope="col">Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for recipe in receipes %}
-    <tr>
-      <th scope="row">{{ forloop.counter }}</th>
-      <td>{{Receipe.receipe_name}}</td>
-      <td>{{receipe.receipe_description}}</td>
-      <td>{{receipe.receipe_image}}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-  
-      </div>
 {% endblock %}
