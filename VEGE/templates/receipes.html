@@ -36,18 +36,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for receipe in receipes %}
+             {% for receipe in receipes %}
+            
             <tr>
                 <th scope="row">{{forloop.counter}}</th>
                 <td>{{receipe.receipe_name}}</td>
                 <td>{{receipe.receipe_description}}</td>
-                <td>
-                    {% if receipe.receipe_image %}
-                        <img src="/media/{{ receipe.receipe_image }}" style="height: 100px;">
-                    {% else %}
-                        No Image
-                    {% endif %}
-                </td>
+                <td>{{receipe.receipe_image}}</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -13,6 +13,7 @@ def receipes(request):
         print('Receipe name:', receipe_name)
         print('Receipe description:', receipe_description)
         print('Receipe image:', receipe_image)
+       
         Receipe.objects.create(receipe_image = receipe_image ,
                                 receipe_name = receipe_name,
                                 receipe_description = receipe_description)
@@ -20,7 +21,7 @@ def receipes(request):
        
     queryset= Receipe.objects.all()
     context ={'receipes': queryset}
-    return render(request , 'receipes.html') 
+    return render(request , 'receipes.html', context) 
    
  
 
