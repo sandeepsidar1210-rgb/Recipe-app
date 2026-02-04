@@ -24,6 +24,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+     
 ]
 
 # Serve static files
@@ -35,7 +36,8 @@ from VEGE.views import *
 urlpatterns = [
     path('', receipes ,),
     path('admin/', admin.site.urls),
-    path('receipes/', receipes , name="receipes")
+    path('receipes/', receipes , name="receipes"),
+    path('delete_receipe/<id>/', delete_receipe , name="delete_receipe")
 ]
 
 
