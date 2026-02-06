@@ -27,7 +27,7 @@ def receipes(request):
 def update_receipe(request ,id):
     queryset = Receipe.objects.get(id = id)
   
-    if request == "POST":
+    if request.method == "POST":
         data = request.POST
         receipe_name = data.get('receipe_name')
         receipe_description = data.get('receipe_description')
