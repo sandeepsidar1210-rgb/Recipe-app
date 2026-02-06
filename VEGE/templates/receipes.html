@@ -44,7 +44,9 @@
                 <td>{{receipe.receipe_name}}</td>
                 <td>{{receipe.receipe_description}}</td>
                 <td><img src="/media/{{receipe.receipe_image}}" style ="height:200px"></td>
-                <td><a href="/delete_receipe/{{receipe.id}}/" class ="btn btn-danger">Delete</a></td>
+                <td><a href="/delete_receipe/{{receipe.id}}/" class ="btn btn-danger m-2">Delete</a>
+                <a href="/update_receipe/{{receipe.id}}" class ="btn btn-success"> Update</a>
+            </td>
             </tr>
             {% endfor %}
         </tbody>
