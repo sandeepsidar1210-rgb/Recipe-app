@@ -56,6 +56,10 @@ def delete_receipe(request ,id):
     queryset = Receipe.objects.get(id = id)
     queryset.delete()
     return redirect('/receipes/')
+
+def login_page(request):
+    return render(request, 'login.html')
+
    
    
  
