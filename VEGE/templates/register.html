@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block start %}
+
+<div class="container mt-5 d-flex flex-column align-items-center">
+  <div
+    class="card shadow-lg p-3 border border-2 border-primary mb-5"
+    style="width: 520px; max-width: 94%"
+  >
+    <div class="card-body">
+      <h2 class="card-title mb-3 text-center">Register</h2>
+      <hr />
+      <form>
+        <div class="mb-3">
+    <label  class="form-label">First Name</label>
+    <input type="text" class="form-control" name="first_name"  aria-describedby="emailHelp" >
+    
+  </div>
+    <div class="mb-3">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="form-control" name="last_name"  aria-describedby="">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input type="text" class="form-control" name="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name ="password" id="exampleInputPassword1">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+   <p>Already have an account. <a href ="/login/" >Login</a></p>
+</form>
+
+
+{% endblock %}
