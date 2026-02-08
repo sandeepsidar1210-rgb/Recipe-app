@@ -62,12 +62,12 @@ def login_page(request):
     return render(request, 'login.html')
 
 
-def register_page(request):
+def register(request):
     if request.method == "POST":
-        first_name=request.POST.get('first_name')
-        last_name=request.POST.get('last_name')
-        username=request.POST.get('Username')
-        password=request.POST.get('password')
+        first_name =request.POST.get('first_name')
+        last_name =request.POST.get('last_name')
+        username =request.POST.get('username')
+        password =request.POST.get('password')
 
 
 
