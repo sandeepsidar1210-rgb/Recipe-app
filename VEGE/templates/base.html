@@ -22,6 +22,21 @@
   </head>
 
   <body>
+    <nav class="navbar bg-primary shadow-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <form class="d-flex" role="search">
+    {%if request.user.is_authenticated %}
+        <a href ="/logout/" class="btn btn-success " tyep="submit">Logout</a>
+      <!-- <button class="btn btn-outline-success" type="submit">Logout</button> -->
+
+    {% else %} 
+    <a href="/login/" class="btn btn-success" type="submit">Login</a> 
+    {% endif %}
+    </form>
+  </div>
+</nav>
+
 
 
 {% block start %} 
