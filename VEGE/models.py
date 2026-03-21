@@ -27,6 +27,12 @@ class studentID(models.Model):
     def __str__(self) -> str:
         return self.student_id
 
+class Subject(models.Model):
+    subject_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.subject_name
+
 class Student(models.Model):
     department = models.ForeignKey(Department, related_name="depart", on_delete=models.CASCADE)
     student_id= models.OneToOneField(studentID, related_name="studentid_relation", on_delete=models.CASCADE)
@@ -38,6 +44,21 @@ class Student(models.Model):
     def __str__(self) -> str:
         return self.student_name
 
+        
+
     class Meta:
         ordering = ['student_name']  #order in ascending ig
         verbose_name = "student"
+
+class StudentMarks(models.Model):
+    student = models.ForeignKey(Student , related_name="studentmarks" , on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject , on_delete=models.CASCADE)
+    marks = models.IntegerField(default=0)
+
+    
+    def __str__(self)->str:
+        return f'{self.student.student_name} - {self.subject.subject_name}'
+
+    class meta:
+        unique_method =['student','subject'] #the combination of student and subject should be unique
+        #a student should have only one entry per subject 
