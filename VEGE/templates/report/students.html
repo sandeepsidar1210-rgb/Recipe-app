@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container mt-5">
+  <style>
+    .report-pagination {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .report-pagination .page-status {
+      margin: 0;
+      font-size: 18px;
+      color: #212529;
+    }
+
+    .report-pagination .nav-link-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      background: #f8f9fa;
+      color: #0d6efd;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .report-pagination .nav-link-btn:hover {
+      background: #e9ecef;
+      color: #0a58ca;
+    }
+
+    .report-pagination .nav-link-btn.disabled {
+      color: #adb5bd;
+      pointer-events: none;
+      background: #f8f9fa;
+    }
+  </style>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">student_id</th>
+      <th scope="col">Department</th>
+      <th scope="col">student_name</th>  
+      <th scope="col">student_email</th>
+      <th scope="col">student_age</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for student in queryset%}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{student.student_id}}</td>
+      <td>{{student.department.department}}</td>
+      <td>{{student.student_name}}</td>
+      <td>{{student.student_email}}</td>
+      <td>{{student.student_age}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  <div class="report-pagination" aria-label="Pagination">
+
+    {% if queryset.has_previous %}
+      <a class="nav-link-btn" href="?page=1">first</a>
+    {% else %}
+      <span class="nav-link-btn disabled">first</span>
+    {% endif %}
+
+    {% if queryset.has_previous %}
+      <a class="nav-link-btn" href="?page={{ queryset.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <p class="page-status">Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.</p>
+
+
+    {% if queryset.has_next %}
+      <a class="nav-link-btn" href="?page={{ queryset.next_page_number }}">next</a>
+      <a class="nav-link-btn" href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+    {% else %}
+      <span class="nav-link-btn disabled">next</span>
+      <span class="nav-link-btn disabled">last &raquo;</span>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}
+      
+
+
