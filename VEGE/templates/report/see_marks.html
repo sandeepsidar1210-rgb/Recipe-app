@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container mt-5">
+  <style>
+    .report-pagination {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .report-pagination .page-status {
+      margin: 0;
+      font-size: 18px;
+      color: #212529;
+    }
+
+    .report-pagination .nav-link-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      background: #f8f9fa;
+      color: #0d6efd;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .report-pagination .nav-link-btn:hover {
+      background: #e9ecef;
+      color: #0a58ca;
+    }
+
+    .report-pagination .nav-link-btn.disabled {
+      color: #adb5bd;
+      pointer-events: none;
+      background: #f8f9fa;
+    }
+  </style>
+
+  <h4>Rank :</h4>
+  <h4>Total : {{total_marks.total_marks}} </h4>
+
+  <!-- You’re accessing a dictionary inside a variable. That’s why it looks like total_marks.total_marks. -->
+
+<table class="table table-striped">
+  <tbody>
+    {%for marks in queryset%}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>
+        <b> {{marks.subject.subject_name}} </b>
+      </td>
+      <td>{{marks.marks}}</td>
+      <!-- <td>{{student.student_name}}</td>
+      <td>{{student.student_email}}</td>
+      <td>{{student.student_age}}</td> -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  
+</div>
+
+{% endblock %}
+      
+
+

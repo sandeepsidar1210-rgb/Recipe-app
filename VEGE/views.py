@@ -124,7 +124,7 @@ def register(request):
 
     return render(request, 'register.html')
 
-   
+from django.db.models import Q,Sum   
    
 def get_students(request):
     queryset = Student.objects.all()
@@ -136,4 +136,10 @@ def get_students(request):
     print(page_obj.object_list)
     return render(request, 'report/students.html' , {"queryset": page_obj})
 
+def see_marks(request , student_id):
+    queryset = StudentMarks.objects.filter(student__student_id__student_id = student_id )
+    total_marks = queryset.aggregate(total_marks = Sum('marks'))
+    print(total_marks)
+    return render(request, 'report/see_marks.html', {'queryset' : queryset, 'total_marks': total_marks})
 
+# aggregate -- perform summary calculations directly in the database query instead of looping through records manually in Python.
